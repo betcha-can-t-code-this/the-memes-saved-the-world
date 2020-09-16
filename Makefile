@@ -25,5 +25,11 @@ say-with-libc-write:
 	./say-with-libc-write
 	rm -f say-with-libc-write.o say-with-libc-write
 
+say-with-libc-syscall:
+	$(AS) -o say-with-libc-syscall.o say-with-libc-syscall.s
+	$(LD) -dynamic-linker /lib64/ld-linux-x86-64.so.2 -lc -o say-with-libc-syscall say-with-libc-syscall.o
+	./say-with-libc-syscall
+	rm -f say-with-libc-syscall.o say-with-libc-syscall
+
 .PHONY:
 	# ... :))
