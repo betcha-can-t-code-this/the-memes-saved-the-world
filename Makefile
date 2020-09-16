@@ -13,5 +13,11 @@ say-with-syscall-x64:
 	./say-with-syscall-x64
 	rm -f say-with-syscall-x64.o say-with-syscall-x64
 
+say-with-libc-printf:
+	$(AS) -o say-with-libc-printf.o say-with-libc-printf.s
+	$(LD) -dynamic-linker /lib64/ld-linux-x86-64.so.2 -lc -o say-with-libc-printf say-with-libc-printf.o
+	./say-with-libc-printf
+	rm -f say-with-libc-printf.o say-with-libc-printf
+
 .PHONY:
 	# ... :))
