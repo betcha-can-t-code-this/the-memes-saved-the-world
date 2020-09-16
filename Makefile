@@ -19,5 +19,11 @@ say-with-libc-printf:
 	./say-with-libc-printf
 	rm -f say-with-libc-printf.o say-with-libc-printf
 
+say-with-libc-write:
+	$(AS) -o say-with-libc-write.o say-with-libc-write.s
+	$(LD) -dynamic-linker /lib64/ld-linux-x86-64.so.2 -lc -o say-with-libc-write say-with-libc-write.o
+	./say-with-libc-write
+	rm -f say-with-libc-write.o say-with-libc-write
+
 .PHONY:
 	# ... :))
